@@ -1,5 +1,7 @@
-import 'package:fintech/controllers/bottom-nav-bar-controller.dart';
-import 'package:fintech/views/screens/wallet-screen.dart';
+import 'package:fintech/controllers/bottom_nav_bar_controller.dart';
+import 'package:fintech/views/screens/home_screen.dart';
+import 'package:fintech/views/screens/user_profile_screen.dart';
+import 'package:fintech/views/screens/wallet_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,18 +19,19 @@ class CustomBottomNavBar extends StatelessWidget {
 
     return GetBuilder<BottomNavBarController>(
       builder: (controller) => Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(color: Colors.white),
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(color: Colors.white),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             InkWell(
               onTap: () => {
-                Get.back(),
+                Get.off(() => HomeScreen(),
+                    transition: Transition.cupertinoDialog),
                 controller.updateIndex(0)
               },
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Icon(
                   Icons.home_filled,
                   color: buildActiveIconColor(0, controller.currentIndex),
@@ -36,27 +39,42 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => {Get.to(() => WalletScreen(), transition: Transition.fade), controller.updateIndex(1)},
+              onTap: () => {
+                Get.off(() => WalletScreen(),
+                    transition: Transition.cupertinoDialog),
+                controller.updateIndex(1)
+              },
               child: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Icon(
                   Icons.wallet_outlined,
                   color: buildActiveIconColor(1, controller.currentIndex),
                 ),
               ),
             ),
-            Container(
+            InkWell(
+              onTap: () => {
+                Get.snackbar(
+                  "Sorry",
+                  "No Route Assossiated with this screen",
+                )
+              },
               child: Icon(
                 Icons.add_chart_sharp,
                 color: buildActiveIconColor(2, controller.currentIndex),
               ),
             ),
-            Container(
+            InkWell(
+              onTap: () => {
+                Get.off(() => const UserProfileScreen(),
+                    transition: Transition.cupertinoDialog),
+                controller.updateIndex(3)
+              },
               child: Icon(
                 Icons.person,
                 color: buildActiveIconColor(3, controller.currentIndex),
               ),
-            ),
+            )
           ],
         ),
       ),

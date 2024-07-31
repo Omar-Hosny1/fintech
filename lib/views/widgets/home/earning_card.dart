@@ -1,5 +1,7 @@
-import 'package:fintech/models/Earning.dart';
+import 'package:animated_digit/animated_digit.dart';
+import 'package:fintech/models/earning.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EarningCard extends StatelessWidget {
   const EarningCard({super.key, required this.earning});
@@ -7,10 +9,11 @@ class EarningCard extends StatelessWidget {
   final Earning earning;
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       width: 150,
-      margin: EdgeInsets.only(right: 10),
-      padding: EdgeInsets.all(15),
+      margin: const EdgeInsets.only(right: 10),
+      padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: earning.color,
         borderRadius: BorderRadius.circular(10),
@@ -21,7 +24,7 @@ class EarningCard extends StatelessWidget {
           CircleAvatar(
             child: Text(earning.getFirstLetter()),
           ),
-          Spacer(),
+          const Spacer(),
           Text(
             earning.name,
             style: TextStyle(
@@ -29,10 +32,16 @@ class EarningCard extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: Colors.grey[200]),
           ),
-          Text(
-            earning.getFormatedPrice(),
-            style: TextStyle(color: Colors.white, fontSize: 23),
+          Obx(
+            () => AnimatedDigitWidget(
+              duration: const Duration(seconds: 2),
+              value: earning.price.toInt().obs.value,
+              enableSeparator: true,
+              textStyle: const TextStyle(color: Colors.white, fontSize: 23),
+              prefix: "\$ ",
+            ),
           ),
+          
         ],
       ),
     );

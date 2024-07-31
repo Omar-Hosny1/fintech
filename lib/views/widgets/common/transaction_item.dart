@@ -1,4 +1,4 @@
-import 'package:fintech/models/Transaction.dart';
+import 'package:fintech/models/transaction.dart';
 import 'package:flutter/material.dart';
 
 class TransactionItem extends StatelessWidget {
@@ -11,10 +11,10 @@ class TransactionItem extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon(Icons.laptop),
-          backgroundColor: Colors.amber[100],
+           backgroundColor: Colors.amber[100],
+           child: const Icon(Icons.laptop),
         ),
-        title: Text(transaction.name),
+        title: Text(transaction.name, style:const  TextStyle(fontWeight: FontWeight.bold),),
         subtitle: Text(transaction.description),
         trailing: Text(
           transaction.getFormatedPrice(),

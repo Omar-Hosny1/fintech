@@ -1,29 +1,31 @@
-import 'package:fintech/models/Visa.dart';
+import 'package:fintech/models/visa.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class VisaItem extends StatelessWidget {
-  const VisaItem({super.key, required this.visa});
+  VisaItem({super.key, required this.visa, required this.orientation});
   final Visa visa;
+  Orientation orientation;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360,
-      margin: EdgeInsets.only(right: 10),
+      width: orientation == Orientation.portrait ? 360 : 200,
+      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
           color: visa.backgroundColor, borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Total Balance',
                       style: TextStyle(
                         color: Colors.black,
@@ -32,7 +34,7 @@ class VisaItem extends StatelessWidget {
                     ),
                     Text(
                       visa.getFormatedBalance(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -48,20 +50,17 @@ class VisaItem extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: Text(
               visa.getFormatedSerialNumber(),
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
-          Spacer(),
+          const Spacer(),
           Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 31, 30, 30),
+            padding: const EdgeInsets.all(10),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 31, 30, 30),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
                 bottomRight: Radius.circular(10),
@@ -82,7 +81,7 @@ class VisaItem extends StatelessWidget {
                     ),
                     Text(
                       visa.clientName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),
@@ -101,7 +100,7 @@ class VisaItem extends StatelessWidget {
                     ),
                     Text(
                       visa.exp,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),

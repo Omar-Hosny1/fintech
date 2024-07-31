@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EntryTitle extends StatelessWidget {
   EntryTitle({
     super.key,
@@ -15,15 +16,16 @@ class EntryTitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 25, bottom: 10),
+          padding: const EdgeInsets.only(top: 25, bottom: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 title,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
-              Text(
+              const Text(
                 "See All",
                 style: TextStyle(
                   color: Colors.blue,

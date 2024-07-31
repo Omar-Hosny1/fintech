@@ -11,14 +11,14 @@ class AddVisaBtn extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
-      margin: EdgeInsets.only(right: 10, left: 5),
+      margin: const EdgeInsets.only(right: 10, left: 5),
       child: DottedBorder(
         borderType: BorderType.RRect,
-        radius: Radius.circular(10),
-        dashPattern: [10, 10],
+        radius: const Radius.circular(10),
+        dashPattern: const [10, 10],
         color: Colors.grey,
         strokeWidth: 2,
-        child: Container(
+        child:  const SizedBox(
           width: 40,
           height: 300,
           child: Center(

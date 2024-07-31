@@ -1,4 +1,4 @@
-import 'package:fintech/utils/main-binding.dart';
+import 'package:fintech/utils/main_binding.dart';
 import 'package:fintech/views/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

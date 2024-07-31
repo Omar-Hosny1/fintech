@@ -1,6 +1,5 @@
-import 'package:fintech/models/Transaction.dart';
-import 'package:fintech/views/widgets/home/entry-title.dart';
-import 'package:fintech/views/widgets/common/transaction-item.dart';
+import 'package:fintech/models/transaction.dart';
+import 'package:fintech/views/widgets/common/transaction_item.dart';
 import 'package:flutter/material.dart';
 
 class TransactionWrapper extends StatelessWidget {
@@ -40,10 +39,13 @@ class TransactionWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: ListView.builder(
-      itemCount: transactions.length,
-      itemBuilder: (context, index) => TransactionItem(
-        transaction: transactions[index],
+        child: Container(
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      child: ListView.builder(
+        itemCount: transactions.length,
+        itemBuilder: (context, index) => TransactionItem(
+          transaction: transactions[index],
+        ),
       ),
     ));
   }
